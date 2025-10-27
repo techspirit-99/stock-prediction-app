@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Stock Predictor</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <h1 class="logo">📈 Stock Predictor AI</h1>
+        <div class="nav-links">
+          <span id="username"></span>
+          <button onclick="logout()" class="btn btn-outline">Logout</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="dashboard-container">
+      <div class="search-section">
+        <h2>Stock Search</h2>
+        <div class="search-box">
+          <input
+            type="text"
+            id="tickerInput"
+            placeholder="Enter stock ticker (e.g., AAPL, GOOGL)"
+          />
+          <button onclick="searchStock()" class="btn btn-primary">
+            Search
+          </button>
+        </div>
+      </div>
+
+      <div id="stockInfo" class="stock-info" style="display: none">
+        <h3 id="stockName"></h3>
+        <div class="price-box">
+          <div class="price-item">
+            <span class="label">Current Price</span>
+            <span id="currentPrice" class="value"></span>
+          </div>
+          <div class="price-item">
+            <span class="label">Open</span>
+            <span id="openPrice" class="value"></span>
+          </div>
+          <div class="price-item">
+            <span class="label">High</span>
+            <span id="highPrice" class="value"></span>
+          </div>
+          <div class="price-item">
+            <span class="label">Low</span>
+            <span id="lowPrice" class="value"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-section">
+        <canvas id="priceChart"></canvas>
+      </div>
+
+      <div class="prediction-section">
+        <h2>AI Prediction</h2>
+        <button onclick="getPrediction()" class="btn btn-primary">
+          Predict Next 7 Days
+        </button>
+        <div id="predictionResult" style="display: none">
+          <canvas id="predictionChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+  </body>
+</html>

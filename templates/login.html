@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Stock Predictor</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="auth-box">
+        <h2>Welcome Back</h2>
+        <form id="loginForm">
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="username" required />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="password" required />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+          <p class="form-footer">
+            Don't have an account? <a href="/register">Sign up</a>
+          </p>
+        </form>
+        <div id="message" class="message"></div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const username = document.getElementById("username").value;
+          const password = document.getElementById("password").value;
+          const messageDiv = document.getElementById("message");
+
+          try {
+            const response = await fetch("/api/auth/login", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ username, password }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+              localStorage.setItem("token", data.access_token);
+              localStorage.setItem("user", JSON.stringify(data.user));
+              window.location.href = "/dashboard";
+            } else {
+              messageDiv.textContent = data.error;
+              messageDiv.className = "message error";
+            }
+          } catch (error) {
+            messageDiv.textContent = "Login failed. Please try again.";
+            messageDiv.className = "message error";
+          }
+        });
+    </script>
+  </body>
+</html>

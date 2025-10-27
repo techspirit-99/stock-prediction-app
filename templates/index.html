@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock Prediction AI</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <h1 class="logo">📈 Stock Predictor AI</h1>
+        <div class="nav-links">
+          <a href="/login" class="btn btn-outline">Login</a>
+          <a href="/register" class="btn btn-primary">Sign Up</a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="container">
+        <h1>AI-Powered Stock Predictions</h1>
+        <p>
+          Predict future stock prices using advanced machine learning algorithms
+        </p>
+        <a href="/register" class="btn btn-large">Get Started Free</a>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="container">
+        <div class="feature-card">
+          <h3>🤖 AI Predictions</h3>
+          <p>LSTM neural networks for accurate forecasting</p>
+        </div>
+        <div class="feature-card">
+          <h3>📊 Real-Time Data</h3>
+          <p>Live stock prices from major exchanges</p>
+        </div>
+        <div class="feature-card">
+          <h3>📈 Interactive Charts</h3>
+          <p>Visualize trends and predictions</p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
