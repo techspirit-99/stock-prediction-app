@@ -10,3 +10,31 @@ __pycache__/
 
 # Environment variables
 .env
+# Virtual environments
+
+ENV/
+env.bak/
+venv.bak/
+
+# Python cache files
+
+*.pyd
+
+# Environment variables
+.env
+# Virtual Environment
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment
+.env
+
+# Logs
+*.log
